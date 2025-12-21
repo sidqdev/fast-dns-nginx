@@ -1,0 +1,5 @@
+routes:
+- src: test.example.com
+  dst: http://0.0.0.0:8081
+
+email: admin@gmail.com
