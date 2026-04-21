@@ -2,8 +2,12 @@ FROM ubuntu:latest
 
 COPY requirements.txt requirements.txt
 COPY generate_certs.py generate_certs.py
+COPY generate_nginx_conf.py generate_nginx_conf.py
+COPY base_nginx.conf base_nginx.conf
 COPY conf.yml conf.yml
+COPY run.sh run.sh
 
 RUN apt update && apt install python3 python3-pip certbot python3-certbot-nginx -y 
 RUN python3 -m pip install -r requirements.txt --break-system-packages
-CMD python3 generate_certs.py
+RUN chmod +x run.sh
+CMD ["./run.sh"]
